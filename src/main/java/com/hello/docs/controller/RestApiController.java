@@ -13,20 +13,17 @@ public class RestApiController {
     @GetMapping("/api/hello/{id}")
     public Object helloGet(
             @PathVariable Long id,
-            @RequestParam String name
+            @RequestParam String requiredParam,
+            @RequestParam(required = false) String optionalParam
     ) {
-        return Map.of(
-                "id", id,
-                "name", name,
-                "success", true
-        );
+        return new HelloResponse(id, requiredParam, optionalParam, true);
     }
 
     @PostMapping("/api/hello")
     public Object helloPost(
-            @RequestBody HelloDTO helloDTO
+            @RequestBody HelloRequest helloRequest
     ) {
-        return helloDTO;
+        return new HelloResponse(helloRequest.id(), "requiredParam", null, false);
     }
 
     @PostMapping(
@@ -46,25 +43,21 @@ public class RestApiController {
         );
     }
 
-    private static class HelloDTO {
+    public record HelloRequest(
+            Long id,
+            String name,
+            String nullData,
+            Boolean success
+    ) {
 
-        private Long id;
-        private String name;
-        private Boolean success;
+    }
 
-        public HelloDTO() {
-        }
+    public record HelloResponse(
+            Long id,
+            String requiredParam,
+            String optionalParam,
+            Boolean success
+    ) {
 
-        public Long getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public Boolean getSuccess() {
-            return success;
-        }
     }
 }
