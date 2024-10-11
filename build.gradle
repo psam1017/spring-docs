@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.1'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 group = 'com.hello'
@@ -10,16 +11,61 @@ java {
 	sourceCompatibility = '17'
 }
 
+configurations {
+	asciidoctorExt
+}
+
 repositories {
 	mavenCentral()
+}
+
+ext {
+	set('snippetsDir', file("build/generated-snippets"))
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// rest docs
+	asciidoctorExt 'org.springframework.restdocs:spring-restdocs-asciidoctor'
+	testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// 전역 변수 설정 시작
+ext {
+	snippetsDir = file('build/generated-snippets')
+}
+// 전역 변수 설정 끝
+
+// rest docs 추가 시작
+tasks.named('test') {
+	outputs.dir snippetsDir // test 결과를 저장할 디렉토리를 설정한다.
+	useJUnitPlatform()
+}
+
+tasks.named('asciidoctor') {
+
+	inputs.dir snippetsDir
+	configurations 'asciidoctorExt'
+
+	sources {
+		exclude ('**/api/**') // 커스텀 : "/api/" 가 포함된 디렉토리에 있는 adoc 파일은 html 로 만들지 않는다.
+	}
+
+	baseDirFollowsSourceDir() // 다른 adoc 파일을 include 할 때 경로를 baseDir 로 맞춘다.
+	dependsOn test
+}
+
+bootJar {
+	dependsOn asciidoctor
+	from("${asciidoctor.outputDir}") {
+		into 'static/rest-docs' // rest-docs 디렉토리에서 API 문서를 보여준다. 빌드한 jar 파일을 실행시켜야 적용됨에 주의!
+	}
+}
+// rest docs 추가 끝

@@ -1,0 +1,10 @@
+=== multipart/form-data 요청하기
+
+==== HTTP Request
+include::{snippets}/hello-file-spec/http-request.adoc[]
+include::{snippets}/hello-file-spec/request-headers.adoc[]
+include::{snippets}/hello-file-spec/request-parts.adoc[]
+
+==== HTTP Response
+include::{snippets}/hello-file-spec/http-response.adoc[]
+include::{snippets}/hello-file-spec/response-fields.adoc[]

@@ -1,0 +1,10 @@
+=== POST 요청하기
+
+==== HTTP Request
+include::{snippets}/hello-post-spec/http-request.adoc[]
+include::{snippets}/hello-post-spec/request-headers.adoc[]
+include::{snippets}/hello-post-spec/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/hello-post-spec/http-response.adoc[]
+include::{snippets}/hello-post-spec/response-fields.adoc[]
