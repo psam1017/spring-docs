@@ -1,0 +1,10 @@
+=== POST 요청하기
+
+==== HTTP Request
+include::{snippets}/rest-api-docs-test/hello-post/http-request.adoc[]
+include::{snippets}/rest-api-docs-test/hello-post/request-headers.adoc[]
+include::{snippets}/rest-api-docs-test/hello-post/request-fields.adoc[]
+
+==== HTTP Response
+include::{snippets}/rest-api-docs-test/hello-post/http-response.adoc[]
+include::{snippets}/rest-api-docs-test/hello-post/response-fields.adoc[]

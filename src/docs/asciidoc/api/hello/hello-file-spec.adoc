@@ -1,0 +1,10 @@
+=== multipart/form-data 요청하기
+
+==== HTTP Request
+include::{snippets}/rest-api-docs-test/hello-file/http-request.adoc[]
+include::{snippets}/rest-api-docs-test/hello-file/request-headers.adoc[]
+include::{snippets}/rest-api-docs-test/hello-file/request-parts.adoc[]
+
+==== HTTP Response
+include::{snippets}/rest-api-docs-test/hello-file/http-response.adoc[]
+include::{snippets}/rest-api-docs-test/hello-file/response-fields.adoc[]

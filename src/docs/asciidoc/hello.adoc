@@ -1,0 +1,20 @@
+ifndef::snippets[]
+:snippets: ../ ../build/generated-snippets
+endif::[]
+= Hello API
+:doctype: book
+:icons: font
+:source-highlighter: highlights
+:toc: left
+:toclevels: 2
+:sectlinks:
+:docinfo: shared-head
+
+[[Index]]
+== link:index.html[Index 로 돌아가기]
+
+[[HelloAPI]]
+== Hello API
+include::api/hello/hello-get-spec.adoc[]
+include::api/hello/hello-post-spec.adoc[]
+include::api/hello/hello-file-spec.adoc[]

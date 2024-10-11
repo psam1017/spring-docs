@@ -1,0 +1,10 @@
+=== GET 요청하기
+
+==== HTTP Request
+include::{snippets}/rest-api-docs-test/hello-get/http-request.adoc[]
+include::{snippets}/rest-api-docs-test/hello-get/path-parameters.adoc[]
+include::{snippets}/rest-api-docs-test/hello-get/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/rest-api-docs-test/hello-get/http-response.adoc[]
+include::{snippets}/rest-api-docs-test/hello-get/response-fields.adoc[]
