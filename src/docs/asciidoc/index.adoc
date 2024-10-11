@@ -1,0 +1,13 @@
+ifndef::snippets[]
+:snippets: ../ ../build/generated-snippets
+endif::[]
+= REST API Document
+:doctype: book
+:icons: font
+:source-highlighter: highlights
+:toc: left
+:toclevels: 2
+:sectlinks:
+:docinfo: shared-head
+
+== link:hello.html[Hello API]

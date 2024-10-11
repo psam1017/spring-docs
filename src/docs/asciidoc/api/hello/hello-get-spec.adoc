@@ -1,0 +1,10 @@
+=== GET 요청하기
+
+==== HTTP Request
+include::{snippets}/hello-get-spec/http-request.adoc[]
+include::{snippets}/hello-get-spec/path-parameters.adoc[]
+include::{snippets}/hello-get-spec/query-parameters.adoc[]
+
+==== HTTP Response
+include::{snippets}/hello-get-spec/http-response.adoc[]
+include::{snippets}/hello-get-spec/response-fields.adoc[]
