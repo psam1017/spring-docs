@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: My API
+  description: My API description
+  version: 0.1.0
+servers:
+  - url: https://localhost:8080
+tags: []
+paths:
+  /api/hello:
+    post:
+      tags:
+        - api
+      summary: POST Method API
+      description: POST Method API
+      operationId: rest-api-docs-test/hello-post
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/api-hello'
+            examples:
+              rest-api-docs-test/hello-post:
+                value: "{\r\n  \"id\" : 1,\r\n  \"name\" : \"name\",\r\n  \"nullData\"\
+                  \ : null,\r\n  \"success\" : true\r\n}"
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-hello-id'
+              examples:
+                rest-api-docs-test/hello-post:
+                  value: "{\r\n  \"id\" : 1,\r\n  \"requiredParam\" : \"requiredParam\"\
+                    ,\r\n  \"optionalParam\" : null,\r\n  \"success\" : false\r\n}"
+  /api/hello/{id}:
+    get:
+      tags:
+        - api
+      summary: GET Method API
+      description: GET Method API
+      operationId: rest-api-docs-test/hello-get
+      parameters:
+        - name: id
+          in: path
+          description: 아이디
+          required: true
+          schema:
+            type: number
+        - name: requiredParam
+          in: query
+          description: 반드시 전달되어야 하는 파라미터
+          required: true
+          schema:
+            type: string
+        - name: optionalParam
+          in: query
+          description: 선택적으로 전달되는 파라미터
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "200"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api-hello-id'
+              examples:
+                rest-api-docs-test/hello-get:
+                  value: "{\r\n  \"id\" : 1,\r\n  \"requiredParam\" : \"requiredParam\"\
+                    ,\r\n  \"optionalParam\" : null,\r\n  \"success\" : true\r\n}"
+components:
+  schemas:
+    api-hello:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: 성공 여부
+        name:
+          type: string
+          description: 이름
+        nullData:
+          type: string
+          description: NULL 이 가능한 데이터
+        id:
+          type: number
+          description: 아이디
+    api-hello-id:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: 성공 여부
+        requiredParam:
+          type: string
+          description: 반드시 전달되는 응답값
+        id:
+          type: number
+          description: 아이디
+        optionalParam:
+          type: string
+          description: 선택적으로 전달되는 응답값
